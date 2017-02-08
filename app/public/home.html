@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Friend Finder Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1><span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Friend Finder</h1>
+            <p>Answer a few basic questions.</p>
+            <p>Then find the friend with the greatest compatibility!</p>
+            <p><a class="btn btn-primary btn-lg" href="/survey" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Go To Survey</a></p>
+        </div>
+        <a id="api" href="/api/friends">API Friends List</a>
+        <a href="#">GitHub Repo</a>
+    </div>
+    <script type="text/javascript">
+      $('#api').on('click', function(){
+        $.get('/api/new', function(data){
+          if (data){
+            console.log(data);
+          }
+        })
+      })
+    </script>
+</body>
+
+</html>

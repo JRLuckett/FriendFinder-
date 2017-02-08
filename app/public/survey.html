@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>  <a class="btn btn-primary btn-lg" href="/home" role="button"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Learn more</a>Survey Questions</h1>
+        <hr>
+        <h2>Abut You</h2>
+        <div class="input-group">
+            <span class="input-group-addon" >Name</span>
+            <input type="text" id="name" class="form-control" placeholder="required" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" >Photo</span>
+            <input type="text" id="photo" class="form-control" placeholder="url link required" aria-describedby="basic-addon1">
+        </div>
+        <hr>
+        <h2>Question 1</h2>
+        <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+        <select id="q1">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 2</h2>
+        <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
+        <select id="q2">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 3</h2>
+        <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+        <select id="q3">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 4</h2>
+        <h4>You rarely do something just out of sheer curiosity.</h4>
+        <select id="q4">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 5</h2>
+        <h4>People can rarely upset you.</h4>
+        <select id="q5">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 6</h2>
+        <h4>It is often difficult for you to relate to other people’s feelings.</h4>
+        <select id="q6">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 7</h2>
+        <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+        <select id="q7">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 8</h2>
+        <h4>You rarely get carried away by fantasies and ideas.</h4>
+        <select id="q8">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 9</h2>
+        <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+        <select id="q9">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <h2>Question 10</h2>
+        <h4>You feel more energetic after spending time with a group of people.</h4>
+        <select id="q10">
+          <option value="1">strongly agree</option>
+          <option value="2">agree</option>
+          <option value="3">neutral</option>
+          <option value="4">disagree</option>
+          <option value="4">strongly disagree</option>
+        </select>
+        <br>
+        <a id="submit" class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Learn more</a>
+        <br>
+        <a href="#">API Friends List</a>
+        <a href="#">GitHub Repo</a>
+    </div>
+    <script type="text/javascript">
+    $('#submit').on('click', function(){
+      event.preventDefault();
+      var newFriend = {
+        name: $('#name').val().trim(),
+        photo: $('#photo').val().trim(),
+        q1: $('#q1').val(),
+        q2: $('#q2').val(),
+        q3: $('#q3').val(),
+        q4: $('#q4').val(),
+        q5: $('#q5').val(),
+        q6: $('#q6').val(),
+        q7: $('#q7').val(),
+        q8: $('#q8').val(),
+        q9: $('#q9').val(),
+        q10: $('#q10').val()
+      };
+      $.post("/api/friends", newFriend, function(){})
+      .done (function(data) {
+        console.log(data);
+      });
+    });
+
+    </script>
+</body>
+
+</html>
