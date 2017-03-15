@@ -1,15 +1,13 @@
-// var friends = [{
-//   name:'Jerry Lewis',
-//   photo:'http://vignette4.wikia.nocookie.net/wallaceandgromit/images/3/3e/Wallace-482x298.jpg/revision/latest/scale-to-width-down/299?cb=20140526031303',
-//   q1: 2,
-//   a2: 4,
-//   q3: 2,
-//   q4: 1,
-//   q5: 4,
-//   q6: 3,
-//   q7: 4,
-//   q8: 2,
-//   q9: 4,
-//   q10: 2
-// }];
-// module.exports = friends;
+var friends = [
+  {
+    name:'Jerry Lewis',
+    photo:'http://vignette4.wikia.nocookie.net/wallaceandgromit/images/3/3e/Wallace-482x298.jpg/revision/latest/scale-to-width-down/299?cb=20140526031303',
+    scores: [2, 4, 2, 1, 4, 3, 4, 2, 4, 2]
+  },
+  {
+    name:'Mike Netler',
+    photo:'https://pbs.twimg.com/profile_images/592577318511489024/OhZq-51G.jpg',
+    scores: [1, 4, 1, 1, 4, 2, 4, 1, 4, 4]
+  }
+];
+module.exports = friends;

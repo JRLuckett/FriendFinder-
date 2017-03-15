@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -114,30 +115,46 @@
           <option value="4">strongly disagree</option>
         </select>
         <br>
-        <a id="submit" class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Learn more</a>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+        Submit</button>
         <br>
-        <a href="#">API Friends List</a>
+        <a href="./api/friends">API Friends List</a>
         <a href="#">GitHub Repo</a>
     </div>
+    <div id="resultsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h2 class="modal-title"><strong>Best Match</strong></h2>
+            </div>
+            <div class="modal-body">
+                <h2 id="matchName"></h2>
+                <img id="matchImg" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
     <script type="text/javascript">
     $('#submit').on('click', function(){
       event.preventDefault();
       var newFriend = {
-        name: $('#name').val().trim(),
-        photo: $('#photo').val().trim(),
-        q1: $('#q1').val(),
-        q2: $('#q2').val(),
-        q3: $('#q3').val(),
-        q4: $('#q4').val(),
-        q5: $('#q5').val(),
-        q6: $('#q6').val(),
-        q7: $('#q7').val(),
-        q8: $('#q8').val(),
-        q9: $('#q9').val(),
-        q10: $('#q10').val()
-      };
-      $.post("/api/friends", newFriend, function(){})
-      .done (function(data) {
+       name: $("#name").val(),
+       photo: $("#photo").val(),
+       scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+   }
+  //  var currentURL = window.location.origin;
+   // AJAX post the data to the friends API.
+   $.post("/api/friends", newFriend, function(data){
+     $("#matchName").text(data.name);
+       $('#matchImg').attr("src", data.photo);
+       $("#resultsModal").modal('toggle');
         console.log(data);
       });
     });
